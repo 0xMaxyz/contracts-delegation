@@ -99,6 +99,14 @@ const config: HardhatUserConfig = {
         }
       },
       {
+        network: "core",
+        chainId: 1116,
+        urls: {
+          apiURL: "https://openapi.coredao.org/api",
+          browserURL: "https://scan.coredao.org"
+        }
+      },
+      {
         network: "blast",
         chainId: 81457,
         urls: {
@@ -129,6 +137,30 @@ const config: HardhatUserConfig = {
           apiURL: "https://api.basescan.org/api",
           browserURL: "https://basescan.org"
         }
+      },
+      {
+        network: "sonic",
+        chainId: 146,
+        urls: {
+          apiURL: "https://api.sonicscan.org/api",
+          browserURL: "https://sonicscan.org"
+        }
+      },
+      {
+        network: "fantom",
+        chainId: 250,
+        urls: {
+          apiURL: "https://api.ftmscan.org/api",
+          browserURL: "https://ftmscan.org"
+        }
+      },
+      {
+        network: "scroll",
+        chainId: 534352,
+        urls: {
+          apiURL: "https://api.scrollscan.com/api",
+          browserURL: "https://scrollscan.com"
+        }
       }
     ],
     apiKey: {
@@ -146,6 +178,10 @@ const config: HardhatUserConfig = {
       metis: "XX",
       avalanche: "XX",
       hemi: "XX",
+      core:  process.env.CORESCAN_API_KEY ?? '',
+      sonic:  process.env.SONICSCAN_API_KEY ?? '',
+      scroll:  process.env.SCROLLSCAN_API_KEY ?? '',
+      fantom:  process.env.FANTOMSCAN_API_KEY ?? '',
     }
   },
   gasReporter: {
@@ -220,6 +256,24 @@ const config: HardhatUserConfig = {
       url: 'https://rpc.hemi.network/rpc',
       accounts,
       chainId: 43111,
+      live: true,
+    },
+    core: {
+      url: 'https://rpc.coredao.org',
+      accounts,
+      chainId: 1116,
+      live: true,
+    },
+    scroll: {
+      url: 'https://rpc.scroll.io',
+      accounts,
+      chainId: 534352,
+      live: true,
+    },
+    sonic: {
+      url: 'https://rpc.soniclabs.com',
+      accounts,
+      chainId: 146,
       live: true,
     },
     matic: {
